@@ -1,0 +1,138 @@
+@use 'variables' as v;
+@use 'mixins' as m;
+@use 'fonts';
+
+/* ===== Hero ===== */
+.hero{
+  margin-bottom: 140px;
+  background: v.$violet-10;
+  height: 720px;
+
+  &__inner{
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 133px;
+    align-items: center;
+
+    padding-inline: 100px;
+    padding-block: 120px;
+    box-sizing: border-box;
+  }
+
+  &__col{ min-width: 0; }
+
+  &__col--text{ text-align: left; }
+
+  &__col--media{
+    min-width: 0;
+    min-height: 0;
+    display: grid;
+    place-items: center;
+  }
+
+  &__title{
+    @include m.text(64px, 72px, 700, v.$gray-1, normal, v.$font-family-accent);
+    margin: 0 0 32px;
+  }
+
+  &__lead{
+    @include m.text(18px, 30px, 400, v.$gray-2, normal, v.$font-family-base);
+    margin: 0 0 48px;
+    max-width: 560px;
+  }
+
+  &__cta{
+    @include m.button-solid(v.$violet, v.$white, v.$violet, v.$violet, v.$gray-5, v.$gray-3);
+    @include m.text(16px, 14px, 700, v.$white, normal, v.$font-family-accent);
+    border-radius: 60px;
+    padding: 20px 64px;
+    display: inline-flex;
+
+    box-sizing: border-box;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__img{
+    display: block;
+    max-width: 100%;
+    height: auto;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+
+  @media (max-width: #{v.$bp-l}) {
+    height: 944px;
+
+    &__inner{
+      grid-template-columns: 1fr;
+      justify-items: center;
+      text-align: center;
+
+      padding-inline: 40px;
+      padding-top: 40px;
+      padding-bottom: 24px;
+      gap: 24px;
+    }
+
+    &__col--text{ text-align: center; }
+
+    &__title{
+      @include m.text(40px, 44px, 700, v.$gray-1, normal, v.$font-family-accent);
+      margin-bottom: 24px;
+    }
+
+    &__lead{ margin-bottom: 32px; }
+
+    &__cta{
+      width: auto;
+      justify-content: center;
+      margin-inline: auto;
+    }
+  }
+
+  @media (max-width: #{v.$bp-md}) {
+    height: 833px;
+
+    &__inner{
+      justify-items: center;
+      text-align: center;
+      padding-inline: 20px;
+      padding-top: 32px;
+      padding-bottom: 16px;
+    }
+
+    &__col--text{
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+    }
+
+    &__cta{
+      width: 100%;
+      justify-content: center;
+      margin-inline: 0;
+    }
+
+    &__col--media{
+      align-self: stretch;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 0;
+    }
+    &__img{
+      max-height: 100%;
+      width: auto;
+      max-width: 100%;
+      object-fit: contain;
+    }
+  }
+
+}

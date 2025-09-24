@@ -1,0 +1,124 @@
+/* ===========================
+   VARIABLES (design tokens)
+   =========================== */
+
+/* --- Grays --- */
+$gray-1: #333333;
+$gray-2: #4F4F4F;
+$gray-3: #828282;
+$gray-5: #E0E0E0;
+
+/* --- Brand / Accents --- */
+$brand-default: #4F62F6;  // Default
+$brand-hover:   #7181FC;  // Hover
+$brand-pressed: #354BF4;  // Pressed
+$violet:        #6248FF; 
+$indigo:        #5856D6;  
+$white:         #FFFFFF;
+$success:       #0EAC00;
+$error:         #EB5757;
+$black:         #000000;  
+
+/* --- Colors map (optional, for map-get usage) --- */
+$colors: (
+  "brand-default": $brand-default,
+  "brand-hover":   $brand-hover,
+  "brand-pressed": $brand-pressed,
+  "violet":        $violet,
+  "indigo":        $indigo,
+  "white":         $white,
+  "gray-1":        $gray-1,
+  "gray-2":        $gray-2,
+  "gray-3":        $gray-3,
+  "gray-5":        $gray-5,
+  "success":       $success,
+  "error":         $error
+);
+
+/* --- Semantic tokens: Buttons --- */
+$btn-bg-default:  $brand-default;
+$btn-bg-hover:    $brand-hover;
+$btn-bg-pressed:  $brand-pressed;
+$btn-bg-disabled: $gray-5;
+
+$btn-fg-default:  $white;
+$btn-fg-hover:    $white;
+$btn-fg-pressed:  $white;
+$btn-fg-disabled: $gray-3;
+
+/* --- Semantic tokens: Inputs --- */
+$input-border-default:  $gray-5;   // Default
+$input-text-default:    $gray-3;
+
+$input-border-focus:    $gray-3;   // Focus / typing
+$input-text-focus:      $gray-2;
+
+$input-border-data:     $success;  // Data
+$input-text-data:       $gray-2;
+
+$input-border-error:    $error;    // Error
+$input-text-error:      $gray-2;
+$input-helper-error:    $error;
+
+/* --- Backgrounds (can be used for sections) --- */
+$bg-base:  $white;
+$bg-muted: $gray-5;
+$bg-card:  $white;
+
+/* --- Opacities / derived --- */
+$opacity-10: 0.10;
+$violet-10: rgba($violet, $opacity-10);
+
+/* --- Typography --- */
+/* Заголовки: Museo Sans Cyrl 700; Тіло/абзаци: Montserrat 400 */
+$font-family-headings: "Museo Sans Cyrl", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+$font-family-body:     "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+
+/* Для сумісності з існуючими міксинами/стилями: */
+$font-family-base:   $font-family-body;     // p/body
+$font-family-accent: $font-family-headings; // заголовки/навігація тощо
+
+$font-weight-regular: 400; /* Montserrat Regular */
+$font-weight-bold:    700; /* Museo Sans Cyrl Bold */
+
+$font-size-base:   16px;
+$line-height-base: 1.5;
+
+/* --- Layout / Spacing / Radii --- */
+$container-max: 1180px;
+
+$space-0: 0;
+$space-1: 4px;
+$space-2: 8px;
+$space-3: 12px;
+$space-4: 16px;
+$space-5: 20px;
+$space-6: 24px;
+$space-7: 32px;
+$space-8: 40px;
+
+$radius-8:  8px;
+$radius-12: 12px;
+$radius-16: 16px;
+
+/* --- Breakpoints --- */
+$bp-sm: 480px;
+$bp-md: 768px;
+$bp-l: 1440px;
+
+$breakpoints: (
+  "sm": $bp-sm,
+  "md": $bp-md,
+  "l": $bp-l
+);
+
+/* ===== Header layout tokens (added) ===== */        
+$header-h: 80px;             
+
+/* Падінги для хедера: 120 зліва, 63 справа */
+$pad-x-page: 120px;            // загальний падінг сторінки (про всяк)
+$pad-x-header-left: 120px;     // лівий
+$pad-x-header-right: 63px;     // правий
+
+/* Додатковий брейкпойнт під макет 320 */
+$bp-xs: 320px;

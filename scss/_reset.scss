@@ -1,0 +1,55 @@
+/* ========== Soft Reset ========== */
+
+/* 1) Коректна модель коробки всюди */
+*, *::before, *::after { box-sizing: border-box; }
+
+/* 2) Базові налаштування документа */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+body {
+  margin: 0;                 /* прибираємо відступ браузера */
+  min-height: 100dvh;        /* стабільна висота */
+  line-height: 1.5;          /* читабельний дефолт */
+}
+
+/* 3) Прибираємо неочікувані зовнішні відступи у типових блоків */
+:where(h1,h2,h3,h4,h5,h6,p,figure,blockquote,dl,dd) { margin: 0; }
+
+/* 4) Списки без маркерів, якщо вони семантично «списки для верстки» */
+:where(ul[role="list"], ol[role="list"]) { list-style: none; padding: 0; margin: 0; }
+
+/* 5) Зображення та медіа не “вилазять” за контейнер */
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* 6) Посилання без дивних артефактів підкреслення */
+a { text-decoration-skip-ink: auto; }
+a:not([class]) { color: inherit; } /* лишаємо колір від батька, якщо без класу */
+
+/* 7) Форми успадковують шрифти, не ламаючи нативний вигляд */
+input, button, textarea, select {
+  font: inherit;
+  color: inherit;
+}
+textarea { resize: vertical; }
+
+/* 8) Таблиці без подвійних ліній */
+table { border-collapse: collapse; border-spacing: 0; }
+
+/* 9) Атрибут hidden — справді ховає елемент у всіх випадках */
+[hidden] { display: none !important; }
+
+/* 10) Менше анімацій для користувачів з prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

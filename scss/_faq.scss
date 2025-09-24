@@ -1,0 +1,120 @@
+@use 'variables' as v;
+@use 'mixins'    as m;
+
+
+/* ===== FAQ ===== */
+.faq{
+    margin-bottom: 140px;
+
+  &__inner{ 
+    margin: 0 auto;
+    max-width: 1440px;
+    padding: 0 120px;
+  }
+
+  &__title{
+    @include m.text(56px, 66px, 700, v.$gray-1, normal, v.$font-family-accent); 
+    margin: 0 0 60px;
+    max-width: 60%;
+
+    span{
+      background: v.$violet-10;
+      border-radius: 6px;
+      padding: 0 .25em;
+    }
+  }
+
+  &__list{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    row-gap: 16px; 
+  }
+}
+
+.faq-item{
+  border: 2px solid v.$violet;
+  border-radius: 20px;
+  background: v.$white;
+  overflow: clip;
+  transition: border-color .2s ease, box-shadow .2s ease;
+
+  &__head{ margin: 0; }
+
+  &__btn{
+    all: unset;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: start;
+    cursor: pointer;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 32px 40px;
+    gap: 24px;
+    &:focus-visible{ @include m.focus-ring(v.$brand-hover); border-radius: 18px; }
+  }
+
+  &__q{ @include m.text(24px, 1.2, 700, v.$gray-1, normal, v.$font-family-accent); }
+  &__plus{ width:20px; height:20px; transition: transform .25s ease; }
+
+ 
+   &__panel{  
+    box-sizing: border-box;
+    padding: 0 40px;          
+    height: 0;              
+    overflow: clip;        
+    transition: height .28s ease;
+  }
+
+  &__a{
+    @include m.text(16px, 27px, 400, v.$gray-2, normal, v.$font-family-base);
+    margin: 0 0 32px;      
+  }
+
+  &.faq-item--open{
+    .faq-item__plus{ transform: rotate(45deg); }
+    box-shadow: 0 8px 28px rgba(0,0,0,.06);
+  }
+
+  &__a{ @include m.text(16px, 27px, 400, v.$gray-2, normal, v.$font-family-base); margin:0; }
+
+  &.faq-item--open{
+    .faq-item__plus{ transform: rotate(45deg); }
+    box-shadow: 0 8px 28px rgba(0,0,0,.06);
+  }
+}
+
+
+@media (max-width: #{v.$bp-l}) {
+    .faq-title {
+        margin-bottom: 48px;
+    }
+    .faq {
+        &__inner{
+            padding: 0 40px;
+        }
+        &__title {
+            max-width: 100%;
+        }
+    }
+}
+
+@media (max-width: #{v.$bp-md}) {
+    .faq-title {
+        margin-bottom: 32px;
+        font-size: 40px;
+        line-height: 44px;
+    }
+    .faq{
+        &__inner{
+            padding: 0 20px;
+        }
+        &__title{
+        @include m.text(40px, 44px, 700, v.$gray-1, normal, v.$font-family-accent); 
+        
+        max-width: 100%;
+
+        }
+    }
+}

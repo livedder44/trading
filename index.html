@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Trade</title>
+  <link rel="stylesheet" href="./css/styles.css" />
+  <link rel="icon" type="image/png" href="/assets/icons/icon.png" />
+</head>
+
+<body>
+<header class="site-header" role="banner">
+  <div class="site-header__inner">
+    <div class="site-header__left">
+      <a href="/" class="logo" aria-label="Go to homepage">
+        <img src="./assets/icons/logo.svg" alt="LOGO" />
+      </a>
+
+      <nav class="primary-nav" id="primary-nav" aria-label="Primary">
+        <ul class="primary-nav__list">
+          <li><a class="primary-nav__link" href="#how" data-scroll>How it works</a></li>
+          <li><a class="primary-nav__link" href="#about" data-scroll>About</a></li>
+          <li><a class="primary-nav__link" href="#instructions" data-scroll>Instructions</a></li>
+          <li><a class="primary-nav__link" href="#accounts" data-scroll>Accounts</a></li>
+          <li><a class="primary-nav__link" href="#platforms" data-scroll>Platforms</a></li>
+          <li><a class="primary-nav__link" href="#contact" data-scroll>Contact</a></li>
+        </ul>
+        <div class="primary-nav__lang">
+          <div class="lang" data-lang>
+            <button class="lang__btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+              <span class="lang__current">EN</span>
+              <span class="lang__chev" aria-hidden="true"></span>
+            </button>
+            <ul class="lang__list" role="listbox" hidden>
+              <li class="lang__opt" role="option" data-value="EN" aria-selected="true">EN</li>
+              <li class="lang__opt" role="option" data-value="UA">UA</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="primary-nav__cta">
+          <a href="#signin" class="btn btn--violet" data-scroll>Sign in for free</a>
+        </div>
+      </nav>
+    </div>
+
+    <div class="site-header__right">
+      <div class="lang" data-lang>
+        <button class="lang__btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+          <span class="lang__current">EN</span>
+          <span class="lang__chev" aria-hidden="true"></span>
+        </button>
+        <ul class="lang__list" role="listbox" hidden>
+          <li class="lang__opt" role="option" data-value="EN" aria-selected="true">EN</li>
+          <li class="lang__opt" role="option" data-value="UA">UA</li>
+        </ul>
+      </div>
+      <a href="#signin" class="btn btn--violet header-cta" data-scroll>Sign in for free</a>
+      <button class="burger" type="button" aria-label="Open menu" aria-controls="primary-nav" aria-expanded="false">
+        <span class="burger__bar"></span>
+        <span class="burger__bar"></span>
+        <span class="burger__bar"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+ <section id="hero" class="hero" aria-labelledby="hero-title">
+  <div class="hero__inner">
+    <div class="hero__col hero__col--text">
+      <h1 id="hero-title" class="hero__title">
+        Trade everywhere.<br />
+        Invest here!
+      </h1>
+
+      <p class="hero__lead">
+        We provide only the best trading software. The trading terminal MetaTrader4 is the most
+        popular and convenient platform for access to global exchanges. You can work anywhere.
+      </p>
+
+      <a href="#signin" class="btn hero__cta" data-scroll>Start trading</a>
+    </div>
+
+    <div class="hero__col hero__col--media">
+      <img
+        class="hero__img"
+        src="./assets/img/heroImg.png"
+        alt="Trading growth illustration"
+        width="482" height="512"
+        loading="eager"
+      />
+    </div>
+  </div>
+</section>
+ <section class="instructions" id="instructions" aria-labelledby="instructions-title">
+  <div class="instructions__grid">
+    <h2 class="instructions__title" id="instructions-title">
+      Getting Started Is <span>Fast &amp; Easy</span>
+    </h2>
+
+    <article class="instr-card instr-card--1" id="card1">
+      <span class="instr-card__num">01.</span>
+      <h3 class="instr-card__title">Register</h3>
+      <p class="instr-card__text">
+        Complete the simple registration to get your trading credentials.
+      </p>
+    </article>
+
+    <div class="instr-wrap instr-wrap--rA">
+      <img class="instr-conn instr-conn--right" src="./assets/svgBorders/rightPC.svg" alt="" aria-hidden="true" />
+      <article class="instr-card">
+        <span class="instr-card__num">02.</span>
+        <h3 class="instr-card__title">Verification</h3>
+        <p class="instr-card__text">
+          Big Invest is required to verify your identity, upload your documents quickly and get approved in minutes.
+        </p>
+      </article>
+    </div>
+
+    <div class="instr-wrap instr-wrap--lA">
+      <img class="instr-conn instr-conn--left" src="./assets/svgBorders/leftPC.svg" alt="" aria-hidden="true" />
+      <article class="instr-card">
+        <span class="instr-card__num">03.</span>
+        <h3 class="instr-card__title">Deposit funds</h3>
+        <p class="instr-card__text">
+          Big Invest accepts credit cards and bank wires. Just use the secure deposit form and follow the steps.
+        </p>
+      </article>
+    </div>
+
+    <div class="instr-wrap instr-wrap--rB">
+      <img class="instr-conn instr-conn--right" src="./assets/svgBorders/rightPC.svg" alt="" aria-hidden="true" />
+      <article class="instr-card">
+        <span class="instr-card__num">04.</span>
+        <h3 class="instr-card__title">Start Trading</h3>
+        <p class="instr-card__text">
+          Once your deposit has been credited, you can begin trading instantly. In no time you will see profits rolling into your account.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+<section id="testimonials" class="testimonials" aria-labelledby="testimonials-title">
+  <div class="testimonials__inner">
+    <header class="testimonials__header">
+      <h2 id="testimonials-title" class="testimonials__title">
+        People love Big <span>Invest</span>
+      </h2>
+
+      <div class="testimonials__nav" aria-label="Testimonials navigation">
+        <button class="tnav tnav--prev" type="button" aria-label="Previous testimonial" disabled>
+          <span class="tnav__icon" aria-hidden="true">‹</span>
+        </button>
+        <button class="tnav tnav--next" type="button" aria-label="Next testimonial">
+          <span class="tnav__icon" aria-hidden="true">›</span>
+        </button>
+      </div>
+    </header>
+
+    <div class="testimonials__viewport">
+      <figure class="tcard" aria-live="polite">
+        <figcaption class="tcard__person">
+          <img class="tcard__avatar" src="" alt="" width="73" height="73" loading="lazy" />
+          <div class="tcard__who">
+            <span class="tcard__name"></span>
+            <span class="tcard__role"></span>
+          </div>
+        </figcaption>
+
+        <img class="tcard__quote" src="./assets/icons/quotes.svg" alt="" aria-hidden="true" />
+
+        <blockquote class="tcard__text"></blockquote>
+
+        <div class="tcard__counter">
+          <span class="tcard__index">01</span>
+          <span class="tcard__sep">/</span>
+          <span class="tcard__total">01</span>
+        </div>
+      </figure>
+      
+    </div>
+  </div>
+</section>
+
+<section id="faq" class="faq" aria-labelledby="faq-title">
+  <div class="faq__inner">
+    <h2 id="faq-title" class="faq__title">Frequently asked <span>questions</span></h2>
+
+    <ul class="faq__list">
+      <li class="faq-item">
+        <h3 class="faq-item__head">
+          <button
+            class="faq-item__btn"
+            type="button"
+            aria-expanded="false"
+            aria-controls="faq-p1"
+            id="faq-b1"
+          >
+            <span class="faq-item__q">How do I change my details?</span>
+            <img class="faq-item__plus" src="./assets/icons/plus.svg" width="20" height="20" alt="" aria-hidden="true">
+          </button>
+        </h3>
+        <div class="faq-item__panel" id="faq-p1" role="region" aria-labelledby="faq-b1" hidden>
+          <p class="faq-item__a">
+            We provide only the best trading software. The trading terminal MetaTrader4 is the most
+            popular and convenient platform for access to global exchanges. You can work anywhere.
+            All you need is the Internet because the necessary trading tools are already collected
+            in one place and are available in a couple of clicks. Use only the best and develop with us!
+          </p>
+        </div>
+      </li>
+
+      <li class="faq-item faq-item--open">
+        <h3 class="faq-item__head">
+          <button
+            class="faq-item__btn"
+            type="button"
+            aria-expanded="true"
+            aria-controls="faq-p2"
+            id="faq-b2"
+          >
+            <span class="faq-item__q">What platforms will I be able to use?</span>
+            <img class="faq-item__plus" src="./assets/icons/plus.svg" width="20" height="20" alt="" aria-hidden="true">
+          </button>
+        </h3>
+        <div class="faq-item__panel" id="faq-p2" role="region" aria-labelledby="faq-b2">
+          <p class="faq-item__a">
+            We provide only the best trading software. The trading terminal MetaTrader4 is the most
+            popular and convenient platform for access to global exchanges. You can work anywhere.
+            All you need is the Internet because the necessary trading tools are already collected
+            in one place and are available in a couple of clicks. Use only the best and develop with us!
+          </p>
+        </div>
+      </li>
+
+      <li class="faq-item">
+        <h3 class="faq-item__head">
+          <button class="faq-item__btn" type="button" aria-expanded="false" aria-controls="faq-p3" id="faq-b3">
+            <span class="faq-item__q">How do I change my details?</span>
+            <img class="faq-item__plus" src="./assets/icons/plus.svg" width="20" height="20" alt="" aria-hidden="true">
+          </button>
+        </h3>
+        <div class="faq-item__panel" id="faq-p3" role="region" aria-labelledby="faq-b3" hidden>
+          <p class="faq-item__a">Answer text…</p>
+        </div>
+      </li>
+      <li class="faq-item">
+        <h3 class="faq-item__head">
+          <button class="faq-item__btn" type="button" aria-expanded="false" aria-controls="faq-p3" id="faq-b3">
+            <span class="faq-item__q">How do I change my details?</span>
+            <img class="faq-item__plus" src="./assets/icons/plus.svg" width="20" height="20" alt="" aria-hidden="true">
+          </button>
+        </h3>
+        <div class="faq-item__panel" id="faq-p3" role="region" aria-labelledby="faq-b3" hidden>
+          <p class="faq-item__a">Answer text…</p>
+        </div>
+      </li>
+      <li class="faq-item">
+        <h3 class="faq-item__head">
+          <button class="faq-item__btn" type="button" aria-expanded="false" aria-controls="faq-p3" id="faq-b3">
+            <span class="faq-item__q">How do I change my details?</span>
+            <img class="faq-item__plus" src="./assets/icons/plus.svg" width="20" height="20" alt="" aria-hidden="true">
+          </button>
+        </h3>
+        <div class="faq-item__panel" id="faq-p3" role="region" aria-labelledby="faq-b3" hidden>
+          <p class="faq-item__a">Answer text…</p>
+        </div>
+      </li>
+      <li class="faq-item">
+        <h3 class="faq-item__head">
+          <button class="faq-item__btn" type="button" aria-expanded="false" aria-controls="faq-p3" id="faq-b3">
+            <span class="faq-item__q">How do I change my details?</span>
+            <img class="faq-item__plus" src="./assets/icons/plus.svg" width="20" height="20" alt="" aria-hidden="true">
+          </button>
+        </h3>
+        <div class="faq-item__panel" id="faq-p3" role="region" aria-labelledby="faq-b3" hidden>
+          <p class="faq-item__a">Answer text…</p>
+        </div>
+      </li>
+      <li class="faq-item">
+        <h3 class="faq-item__head">
+          <button class="faq-item__btn" type="button" aria-expanded="false" aria-controls="faq-p3" id="faq-b3">
+            <span class="faq-item__q">How do I change my details?</span>
+            <img class="faq-item__plus" src="./assets/icons/plus.svg" width="20" height="20" alt="" aria-hidden="true">
+          </button>
+        </h3>
+        <div class="faq-item__panel" id="faq-p3" role="region" aria-labelledby="faq-b3" hidden>
+          <p class="faq-item__a">Answer text…</p>
+        </div>
+      </li>
+      
+    </ul>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="contact__inner">
+    <div class="contact__info">
+      <h2 class="contact__title">Contact us!</h2>
+
+      <p class="contact__subtitle">
+        The support staff and customer service are available to help you with any questions
+        or needs you might have. Just drop us a line.
+      </p>
+
+      <div class="contact__text">
+        This site is owned and operated by Kode Tech Solutions LTD
+      </div>
+
+      <div class="contact__blocks">
+        <div class="contact__block">
+          <h3 class="contact__label">Phone:</h3>
+          <p class="contact__value">442038857261</p>
+        </div>
+
+        <div class="contact__block">
+          <h3 class="contact__label">Email:</h3>
+          <p class="contact__value">help@google.com</p>
+        </div>
+
+        <div class="contact__block">
+          <h3 class="contact__label">Address:</h3>
+          <p class="contact__value">
+            Trust Company Complex, Ajeltake Road, Ajeltake Island, Majuro,
+            Republic of the Marshall Islands, MH 96960
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <form class="contact__form" novalidate>
+      <div class="contact__fields">
+        <div class="contact__field">
+          <input type="text" name="name" placeholder="Name" required />
+          <span class="contact__error">This field is required</span>
+        </div>
+        <div class="contact__field">
+          <input type="email" name="email" placeholder="Email" required />
+          <span class="contact__error">Incorrect email type</span>
+        </div>
+        <div class="contact__field">
+          <textarea name="message" placeholder="Message" required></textarea>
+          <span class="contact__error">This field is required</span>
+        </div>
+      </div>
+
+      <button type="submit" class="contact__btn">Send</button>
+    </form>
+  </div>
+</section>
+
+
+</main>
+<footer class="site-footer" id="footer" aria-labelledby="footer-title">
+  <div class="site-footer__inner">
+    <div class="site-footer__top">
+      <a href="/" class="footer-logo" aria-label="Go to homepage">
+        <img src="./assets/icons/LOGO.svg" width="45" height="24" alt="LOGO">
+      </a>
+
+      <section class="footer-block">
+        <h3 class="footer-block__title">Information and high risk warning:</h3>
+        <p class="footer-block__text">
+          Trading with foreign exchange (FX), contract for differences (CFDs) and precious metals
+          carries a high level of risk that may not be suitable for all investors. Leverage creates
+          additional risk and loss exposure. Before you decide to trade foreign exchange or contract
+          for differences, carefully consider your investment objectives, experience level, and risk tolerance.
+        </p>
+      </section>
+
+      <section class="footer-block">
+        <h3 class="footer-block__title">Legal disclaimer:</h3>
+        <p class="footer-block__text">
+          Forex trading entails significant risks and is not appropriate for all investors. The possibility of
+          incurring substantial losses should be taken into account. It is therefore important to understand
+          the possible consequences of investing. Traders should weigh their earning potential against the risks
+          involved and act accordingly. Interactive Trade Ltd operating under brand and using domenLink domain
+          within the European Economic Area.
+        </p>
+      </section>
+
+      <nav class="footer-nav" aria-label="Footer">
+        <ul class="footer-nav__list">
+          <li><a class="footer-nav__link" href="#about" data-scroll>About us</a></li>
+          <li><a class="footer-nav__link" href="#instructions" data-scroll>Instructions</a></li>
+          <li><a class="footer-nav__link" href="#platforms" data-scroll>Platforms</a></li>
+          <li><a class="footer-nav__link" href="#contact" data-scroll>Contact Us</a></li>
+          <li><a class="footer-nav__link" href="#signin" data-scroll>Sign in</a></li>
+          <li><a class="footer-nav__link" href="#signup" data-scroll>Sign up for free</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="site-footer__bottom">
+      <ul class="footer-legal">
+        <li>Copyright 2020, All Right Reserved</li>
+        <li><a href="#terms">Terms and Conditions</a></li>
+        <li><a href="#privacy">Privacy Policy</a></li>
+        <li><a href="#risk">Risk Warnings</a></li>
+        <li><a href="#aml">Anti-Money Laundering</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function() {
+    try {
+      var saved = localStorage.getItem('lang_ui');      // EN / UA
+      var map = { EN: 'en', UA: 'uk' };
+      if (saved && map[saved] && location.protocol !== 'file:') {
+        var val = '/auto/' + map[saved];
+        document.cookie = 'googtrans=' + val + '; path=/';
+        var d = location.hostname;
+        if (d && d !== 'localhost' && d.indexOf('.') !== -1) {
+          document.cookie = 'googtrans=' + val + '; path=/; domain=.' + d;
+        }
+      }
+    } catch (e) {}
+  })();
+
+  // init Google Translate
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      includedLanguages: 'en,uk',
+      autoDisplay: false
+    }, 'google_translate_element');
+  }
+</script>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<script src="./js/main.js" defer></script>
+</body>
+</html>

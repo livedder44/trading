@@ -1,0 +1,52 @@
+@use'testimonials';
+@use 'fonts';
+@use 'reset';
+@use 'header';
+@use 'hero';
+@use 'faq';
+@use 'contact';
+@use 'instructions';
+@use 'footer';
+@use 'variables' as v;
+@use 'mixins' as m;
+
+html, body {
+    font-family: v.$font-family-body;
+    font-weight: v.$font-weight-regular;
+    font-size: v.$font-size-base;
+    line-height: v.$line-height-base;
+    color: v.$gray-1;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+p {
+  font-family: v.$font-family-body;
+  font-weight: v.$font-weight-regular;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: v.$font-family-headings;
+  font-weight: v.$font-weight-bold;
+  line-height: 1.2;
+  margin: 0 0 0.5em;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+$max: 1440px; 
+.centerline {
+  max-width: $max;
+  width: 100%;
+  margin-inline: auto;
+}
+
+.site-header__inner,
+.hero__inner,
+.instructions,
+.footer__row {
+  @extend .centerline;
+}

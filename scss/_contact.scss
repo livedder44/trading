@@ -1,0 +1,170 @@
+@use 'variables' as v;
+@use 'mixins' as m;
+@use 'fonts';
+
+.contact {
+  
+  background: rgba(v.$violet, 0.08);
+  
+
+  &__inner {
+    padding: 120px;
+    max-width: 1440px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 132px;
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+
+  &__title {
+    @include m.text(56px, 66px, 700, v.$gray-1, normal, v.$font-family-accent);
+    margin: 0 0 32px;
+  }
+
+  &__subtitle {
+    @include m.text(18px, 30px, 400, v.$gray-2, normal, v.$font-family-base);
+    margin: 0 0 48px;
+  }
+
+  &__text {
+    @include m.text(16px, 27px, 400, v.$gray-2, normal, v.$font-family-base);
+    margin: 0 0 24px;
+  }
+
+  &__blocks {
+    display: grid;
+    gap: 16px;
+  }
+
+  &__block {
+    display: grid;
+    gap: 8px;
+  }
+
+  &__label {
+    @include m.text(15px, 16px, 700, v.$gray-1, normal, v.$font-family-accent);
+    margin: 0;
+  }
+
+  &__value {
+    @include m.text(16px, 27px, 400, v.$gray-2, normal, v.$font-family-base);
+    margin: 0;
+  }
+
+
+  &__form {
+    margin: 14px 0;
+    background: v.$white;
+    border: 2px solid v.$violet;
+    border-radius: 20px;
+    padding: 80px;
+    display: grid;
+    gap: 40px;
+  }
+
+  &__fields {
+    display: grid;
+    gap: 24px;
+  }
+
+   &__field {
+    position: relative;
+    display: grid;
+    gap: 8px;
+  
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 7px 16px;
+      border: 1px solid v.$gray-5;
+      border-radius: 6px;
+      font-family: v.$font-family-base;
+      font-size: 16px;
+      line-height: 27px;
+      color: v.$gray-1;
+
+      &::placeholder { color: v.$gray-3; }
+      &:focus { border-color: v.$gray-3; outline: none; }
+      &.is-success { border-color: v.$success; }
+      &.is-error   { border-color: v.$error; }
+    }
+
+    textarea {
+      resize: none;
+      min-height: 100px;
+    }
+
+    .contact__error {
+      height: 20px;
+      position: absolute;  
+      left: 0;
+      top: calc(100% + 4px); 
+      display: none;  
+      @include m.text(15px, 16px, 700, v.$error, normal, v.$font-family-accent); 
+      pointer-events: none;  
+    }
+
+    &.has-error .contact__error {
+      display: block;
+    }
+  }
+
+  &__btn {
+    background: v.$violet;
+    color: v.$white;
+    border: none;
+    border-radius: 60px;
+    padding: 12px 40px;
+    font-family: v.$font-family-accent;
+    font-size: 16px;
+    line-height: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    width: fit-content;
+    margin: 0 auto;
+
+    &:hover {
+      background: v.$brand-hover;
+    }
+
+    &:active {
+      background: v.$brand-pressed;
+    }
+  }
+}
+
+@media (max-width: #{v.$bp-l}) {
+    .contact {
+
+  &__inner {
+        padding: 48px 130px;
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+    &__form {
+
+    padding: 80px 42px;
+
+  }
+}
+}
+
+@media (max-width: #{v.$bp-md}) {
+    .contact {
+  &__inner {
+    padding: 48px 20px ;
+  }    
+   
+  &__form {
+
+    padding: 48px 16px;
+
+  }
+  &__title {
+    @include m.text(40px, 44px, 700, v.$gray-1, normal, v.$font-family-accent);
+  }
+}
+}
