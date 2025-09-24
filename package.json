@@ -1,0 +1,14 @@
+{
+  "name": "trading",
+  "version": "1.0.0",
+  "scripts": {
+    "build:css": "sass src/scss:dist/css --style=compressed",
+    "build": "npm run build:css && cp -r public/* dist/",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
+  },
+  "devDependencies": {
+    "sass": "^1.77.0",
+    "gh-pages": "^6.0.0"
+  }
+}
