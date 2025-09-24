@@ -1,10 +1,7 @@
-// js/main.js  (UPDATED)
 
-/* ===== helpers ===== */
 const $ = (s, r=document)=>r.querySelector(s);
 const $$ = (s, r=document)=>[...r.querySelectorAll(s)];
 
-/* ===== Burger ===== */
 const burger = $('.burger');
 const nav = $('#primary-nav');
 
@@ -13,7 +10,7 @@ function toggleNav(open) {
   nav.classList.toggle('primary-nav--open', open);
   burger.setAttribute('aria-expanded', String(open));
   document.body.classList.toggle('no-scroll', open);
-  if (!open) closeAllLangs(); // сховати випадайки мов при закритті меню
+  if (!open) closeAllLangs(); 
 }
 
 if (burger && nav) {
@@ -22,12 +19,10 @@ if (burger && nav) {
     toggleNav(willOpen);
   });
 
-  // закриваємо меню по кліку на пункт навігації
   $$('.primary-nav__link', nav).forEach(a =>
     a.addEventListener('click', () => toggleNav(false))
   );
 
-  // клік поза меню/бургером закриває меню
   document.addEventListener('click', (e) => {
     if (!nav.classList.contains('primary-nav--open')) return;
     if (!nav.contains(e.target) && !burger.contains(e.target)) {
@@ -35,7 +30,6 @@ if (burger && nav) {
     }
   });
 
-  // Escape закриває меню
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && nav.classList.contains('primary-nav--open')) {
       toggleNav(false);
@@ -43,7 +37,6 @@ if (burger && nav) {
   });
 }
 
-/* ===== Smooth scroll for [data-scroll] ===== */
 $$('[data-scroll]').forEach(a => {
   a.addEventListener('click', (e) => {
     const href = a.getAttribute('href') || '';
@@ -55,11 +48,9 @@ $$('[data-scroll]').forEach(a => {
   });
 });
 
-/* ===== Language dropdown (header + burger, синхронізовано) ===== */
 const langWidgets = $$('[data-lang]');
 const LANG_MAP = { EN: 'en', UA: 'uk' };
 
-/* cookies helpers for Google Translate */
 function getCookie(name){
   return document.cookie.split('; ').find(r => r.startsWith(name + '='))?.split('=')[1] || '';
 }
@@ -72,9 +63,8 @@ function setCookieAllHosts(name, value) {
   }
 }
 
-/* apply Google Translate via cookie (reload if user switched) */
 function applyGoogleTranslate(lang2, {reload=true} = {}) {
-  if (location.protocol === 'file:') return; // cookies не працюють з file://
+  if (location.protocol === 'file:') return;
   const value = `/auto/${lang2}`;
   const ck = getCookie('googtrans');
   if (ck === value || ck === encodeURIComponent(value)) {
@@ -85,7 +75,6 @@ function applyGoogleTranslate(lang2, {reload=true} = {}) {
   if (reload) location.reload();
 }
 
-/* поточна мова: пріоритет — localStorage → з першого виджета → EN */
 let currentLang = (() => {
   try {
     const saved = localStorage.getItem('lang_ui');
@@ -125,18 +114,15 @@ function closeAllLangs(except) {
   });
 }
 
-// ініціалізація кожного виджета
 langWidgets.forEach((widget) => {
   const btn = $('.lang__btn', widget);
   const list = $('.lang__list', widget);
   if (!btn || !list) return;
 
-  // початковий стан
   btn.setAttribute('aria-expanded', 'false');
   list.hidden = true;
   widget.classList.remove('is-open');
 
-  // відкриття/закриття
   btn.addEventListener('click', (e) => {
     e.stopPropagation();
     const willOpen = btn.getAttribute('aria-expanded') !== 'true';
@@ -144,42 +130,35 @@ langWidgets.forEach((widget) => {
     toggleList(widget, willOpen);
   });
 
-  // вибір мови
   list.addEventListener('click', (e) => {
     const li = e.target.closest('.lang__opt');
     if (!li) return;
-    const nextLang = li.dataset.value || li.textContent.trim(); // EN / UA
+    const nextLang = li.dataset.value || li.textContent.trim();
     currentLang = nextLang;
     setLangDisplay(currentLang);
     try { localStorage.setItem('lang_ui', currentLang); } catch {}
     const code = LANG_MAP[currentLang] || 'en';
-    // встановлюємо cookie для Google Translate і перезавантажуємо сторінку
     applyGoogleTranslate(code, { reload: true });
     toggleList(widget, false);
   });
 });
 
-// клік поза будь-яким виджетом — закрити всі
 document.addEventListener('click', (e) => {
   if (!e.target.closest('[data-lang]')) closeAllLangs();
 });
 
-// Escape закриває відкриті списки
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') closeAllLangs();
 });
 
-// застосувати поточну мову на старті у віджетах
 setLangDisplay(currentLang);
 
-/* ===== Testimonials slider (без зациклення) ===== */
 (function () {
   const root = document.querySelector('#testimonials');
   if (!root) return;
 
   const DATA_URL = new URL('./assets/data/reviews.json', document.baseURI).href;
 
-  // hooks
   const card    = root.querySelector('.tcard');
   const avatar  = root.querySelector('.tcard__avatar');
   const nameEl  = root.querySelector('.tcard__name');
@@ -219,7 +198,7 @@ setLangDisplay(currentLang);
     img.src = it.photo;
 
     nameEl.textContent = it.name;
-    roleEl.textContent = it.position; // поле "position" у JSON
+    roleEl.textContent = it.position;
     textEl.textContent = it.review;
 
     idxEl.textContent = pad2(idx + 1);
@@ -228,7 +207,6 @@ setLangDisplay(currentLang);
     updateNav();
   }
 
-  // Без зациклення — індекс в межах [0, length-1]
   function go(delta = 0) {
     const len = data.length;
     if (!len) return;
@@ -237,23 +215,20 @@ setLangDisplay(currentLang);
     if (next < 0) next = 0;
     if (next > len - 1) next = len - 1;
 
-    if (next === i) return; // вже на межі — нічого не робимо
+    if (next === i) return;
     i = next;
     render(i);
   }
 
-  // Навігація
   prevBtns.forEach(b => b.addEventListener('click', () => go(-1)));
   nextBtns.forEach(b => b.addEventListener('click', () => go(1)));
 
-  // Клавіатура
   root.tabIndex = -1;
   root.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowLeft')  go(-1);
     if (e.key === 'ArrowRight') go(1);
   });
 
-  // Свайп
   let startX = 0, swiping = false;
   const TH = 40;
   root.addEventListener('touchstart', (e) => {
@@ -270,7 +245,6 @@ setLangDisplay(currentLang);
     swiping = false;
   });
 
-  // Завантаження JSON
   fetch(DATA_URL, { cache: 'no-store' })
     .then(r => {
       if (!r.ok) throw new Error(`HTTP ${r.status} for ${DATA_URL}`);
@@ -283,12 +257,11 @@ setLangDisplay(currentLang);
       if (!data.length) throw new Error('No valid items');
 
       i = 0;
-      render(i); // це також викликає updateNav()
+      render(i); 
     })
     .catch(err => {
       console.error('[Testimonials] Load error:', err);
 
-      // фолбек — щоб UI не пустував
       data = [{
         name: 'Soon™',
         position: 'Reviews incoming',
@@ -300,7 +273,6 @@ setLangDisplay(currentLang);
     });
 })();
 
-/* ===== Responsive controller for testimonials nav & counter ===== */
 (function () {
   const root = document.querySelector('#testimonials');
   if (!root) return;
@@ -310,51 +282,44 @@ setLangDisplay(currentLang);
   const card      = root.querySelector('.tcard');
   if (!headerNav || !viewport || !card) return;
 
-  // оригінальні елементи
   const initialPrev = headerNav.querySelector('.tnav--prev');
   const initialNext = headerNav.querySelector('.tnav--next');
   const counter     = card.querySelector('.tcard__counter');
 
   if (!initialPrev || !initialNext || !counter) return;
 
-  // живі посилання на кнопки (ті ж самі вузли)
   const prevBtn = initialPrev;
   const nextBtn = initialNext;
 
-  // обгортки/контейнери для різних станів
-  let leftWrap   = null; // для 768–1440
+  let leftWrap   = null;
   let rightWrap  = null;
-  let bar        = null; // для ≤768
+  let bar        = null; 
   let barCounter = null;
 
   function cleanupAll() {
-    // повернути кнопки до хедера
+
     if (prevBtn && prevBtn.parentNode !== headerNav) headerNav.appendChild(prevBtn);
     if (nextBtn && nextBtn.parentNode !== headerNav) headerNav.appendChild(nextBtn);
 
-    // повернути лічильник назад у картку (в кінець)
     if (counter && counter.parentNode !== card) card.appendChild(counter);
 
-    // прибрати тимчасові обгортки
     leftWrap?.remove();  leftWrap = null;
     rightWrap?.remove(); rightWrap = null;
     bar?.remove();       bar = null;
     barCounter = null;
 
-    // скинути класи-мітки
     root.classList.remove('tnav-moved');
     root.classList.remove('tcount-moved');
 
-    // показати хедерну нав, якщо ми її ховали
     headerNav.style.removeProperty('display');
   }
 
   function applyDesktop() {
     cleanupAll();
-    // нічого не робимо — база
+
   }
 
-  function applyMid() { // 768–1440
+  function applyMid() { 
     cleanupAll();
 
     leftWrap = document.createElement('div');
@@ -366,37 +331,31 @@ setLangDisplay(currentLang);
     leftWrap.appendChild(prevBtn);
     rightWrap.appendChild(nextBtn);
 
-    // зліва і справа від картки
     viewport.prepend(leftWrap);
     viewport.appendChild(rightWrap);
 
-    // сховати хедерну нав, бо кнопки перенесені
     headerNav.style.setProperty('display', 'none', 'important');
     root.classList.add('tnav-moved');
   }
 
-  function applyMobile() { // ≤768
+  function applyMobile() {
     cleanupAll();
 
     bar = document.createElement('div');
-    bar.className = 'testimonials__bar'; // стилі в SCSS під моб
+    bar.className = 'testimonials__bar';
 
     barCounter = document.createElement('div');
     barCounter.className = 'testimonials__bar-counter';
 
-    // порядок: prev | counter | next
     bar.appendChild(prevBtn);
     barCounter.appendChild(counter);
     bar.appendChild(barCounter);
     bar.appendChild(nextBtn);
 
-    // бар кладемо ПІД карткою (всередині viewport)
     viewport.appendChild(bar);
 
-    // сховаємо хедерну нав
     headerNav.style.setProperty('display', 'none', 'important');
 
-    // мітки для CSS (щоб, наприклад, сховати старий counter у картці)
     root.classList.add('tnav-moved');
     root.classList.add('tcount-moved');
   }
@@ -410,13 +369,11 @@ setLangDisplay(currentLang);
     else                  applyDesktop();
   }
 
-  // старт + реагуємо на ресайз/орієнтацію
   applyLayout();
   window.addEventListener('resize', applyLayout);
   window.addEventListener('orientationchange', applyLayout);
 })();
 
-/* ===== FAQ accordion (з плавною висотою) ===== */
 (function () {
   const root = document.querySelector('#faq');
   if (!root) return;
@@ -427,14 +384,11 @@ setLangDisplay(currentLang);
   function animateOpen(li){
     const btn   = li.querySelector('.faq-item__btn');
     const panel = li.querySelector('.faq-item__panel');
-
-    // спершу показуємо контент, вимірюємо висоту
     panel.hidden = false;
-    panel.style.paddingBottom = '32px';          // як у макеті
+    panel.style.paddingBottom = '32px';
     panel.style.height = 'auto';
-    const target = panel.scrollHeight;           // потрібна висота
-    panel.style.height = '0px';                  // старт точки анімації
-    // force reflow
+    const target = panel.scrollHeight;
+    panel.style.height = '0px';
     panel.getBoundingClientRect();
 
     li.classList.add('faq-item--open');
@@ -449,7 +403,7 @@ setLangDisplay(currentLang);
 
     const onEnd = (e) => {
       if (e.propertyName !== 'height') return;
-      panel.style.height = 'auto';              // прибираємо фіксацію після анімації
+      panel.style.height = 'auto';
       panel.removeEventListener('transitionend', onEnd);
     };
     panel.addEventListener('transitionend', onEnd);
@@ -460,8 +414,7 @@ setLangDisplay(currentLang);
     const panel = li.querySelector('.faq-item__panel');
 
     const current = panel.scrollHeight;
-    panel.style.height = current + 'px';        // поточна висота як старт
-    // force reflow
+    panel.style.height = current + 'px'; 
     panel.getBoundingClientRect();
 
     li.classList.remove('faq-item--open');
@@ -479,7 +432,7 @@ setLangDisplay(currentLang);
 
     const onEnd = (e) => {
       if (e.propertyName !== 'height') return;
-      panel.hidden = true;                      // ховаємо після завершення
+      panel.hidden = true;  
       panel.removeEventListener('transitionend', onEnd);
     };
     panel.addEventListener('transitionend', onEnd);
@@ -495,13 +448,11 @@ setLangDisplay(currentLang);
     else openItem(li);
   }
 
-  // init
   items.forEach(li => {
     const btn   = li.querySelector('.faq-item__btn');
     const panel = li.querySelector('.faq-item__panel');
     const isOpen = li.classList.contains('faq-item--open');
 
-    // початковий стан
     btn.setAttribute('aria-expanded', String(isOpen));
     if (isOpen){
       panel.hidden = false;
@@ -513,7 +464,6 @@ setLangDisplay(currentLang);
       panel.style.paddingBottom = '0';
     }
 
-    // handlers
     btn.addEventListener('click', (e) => { e.preventDefault(); toggle(li); });
     btn.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(li); }
@@ -569,7 +519,6 @@ document.addEventListener('DOMContentLoaded', () => {
     return ok;
   }
 
-  // live-валидація
   form.addEventListener('input', (e) => {
     const el = e.target;
     if (!el.matches('input, textarea')) return;
@@ -583,22 +532,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // “відправка” без сервера
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     if (!validate()) return;
-
-    // success: очищаємо форму
     form.reset();
-
-    // скинути стани
     fields.forEach(w => {
       const el = w.querySelector('input, textarea');
       if (el) el.classList.remove('is-success', 'is-error');
       w.classList.remove('has-error');
     });
-
-    // (опціонально) мікро-нотифікація
-    // alert('Message sent!');
   });
 });

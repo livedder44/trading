@@ -2,7 +2,7 @@
   "name": "trading",
   "version": "1.0.0",
   "scripts": {
-    "build:css": "sass scss/main.scss dist/css/main.css --style=compressed",
+    "build:css": "sass scss/main.scss dist/css/styles.css --style=compressed",
     "build:assets": "cpy \"assets/**/*\" dist/assets --parents && cpy \"fonts/**/*\" dist/fonts --parents && cpy \"js/**/*\" dist/js --parents && cpy index.html dist/",
     "build": "npm run build:css && npm run build:assets",
     "predeploy": "npm run build",

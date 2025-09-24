@@ -92,7 +92,7 @@
 @media (max-width: #{v.$bp-l}) {
   .site-footer {
     &__inner {
-        padding: 0 40px 48px 40px ;
+        padding: 62px 40px 48px 40px ;
     }
     &__top{ 
     grid-template-columns: 1fr;
@@ -115,8 +115,9 @@
   .footer-logo { 
     grid-area: logo; 
     justify-self: center;
-    margin: 62px 0 54px 0;
-  }
+    margin: 0 0 54px 0;
+}
+  
     .footer-block {
         margin: 0 130px;
         &__title {
@@ -150,10 +151,16 @@
 }
 
 @media (max-width: #{v.$bp-md}) {
-.site-footer__top {
+.site-footer {
+&__inner {
+     padding: 32px 40px 48px 40px ;
+}
+&__top {
   display: grid;
   grid-template-columns: 1fr;
-  row-gap: 0; 
+  row-gap: 0;
+
+}
 }
 
 .site-footer__top > *:not(:last-child) {

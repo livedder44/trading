@@ -1497,7 +1497,7 @@ table {
 
 @media (max-width: 1440px) {
   .site-footer__inner {
-    padding: 0 40px 48px 40px;
+    padding: 62px 40px 48px 40px;
   }
   .site-footer__top {
     grid-template-columns: 1fr;
@@ -1514,7 +1514,7 @@ table {
   .footer-logo {
     grid-area: logo;
     justify-self: center;
-    margin: 62px 0 54px 0;
+    margin: 0 0 54px 0;
   }
   .footer-block {
     margin: 0 130px;
@@ -1550,6 +1550,9 @@ table {
   }
 }
 @media (max-width: 768px) {
+  .site-footer__inner {
+    padding: 32px 40px 48px 40px;
+  }
   .site-footer__top {
     display: grid;
     grid-template-columns: 1fr;
