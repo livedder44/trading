@@ -2,13 +2,15 @@
   "name": "trading",
   "version": "1.0.0",
   "scripts": {
-    "build:css": "sass src/scss:dist/css --style=compressed",
-    "build": "npm run build:css && cp -r public/* dist/",
+    "build:css": "sass scss/main.scss dist/css/main.css --style=compressed",
+    "build:assets": "cpy \"assets/**/*\" dist/assets --parents && cpy \"fonts/**/*\" dist/fonts --parents && cpy \"js/**/*\" dist/js --parents && cpy index.html dist/",
+    "build": "npm run build:css && npm run build:assets",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
   "devDependencies": {
-    "sass": "^1.77.0",
-    "gh-pages": "^6.0.0"
+    "cpy-cli": "^6.0.0",
+    "gh-pages": "^6.3.0",
+    "sass": "^1.93.2"
   }
 }

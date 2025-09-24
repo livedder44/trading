@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Albert Abello",
+    "position": "Director of Growth",
+    "review": "This magical product actually works! It has radically changed the way we build our audiences. Increasing new customer sales by 6x in our most mature market.",
+    "photo": "assets/img/reviews/AlbertAbello.png"
+  },
+  {
+    "name": "Ashir Avack",
+    "position": "Head of Partnerships",
+    "review": "A clear win for our team — onboarding was quick, the UX is clean, and the results are consistent. Exactly what we needed to scale with confidence.",
+    "photo": "assets/img/reviews/AshirAvack.jpg"
+  },
+  {
+    "name": "Jesica Johnson",
+    "position": "Product Marketing Manager",
+    "review": "Super intuitive and reliable. We shipped two campaigns faster than usual and saw noticeable uplift in activation and retention within the first month.",
+    "photo": "assets/img/reviews/JesicaJohnson.jpg"
+  },
+  {
+    "name": "Kevin Kith",
+    "position": "Senior Trader",
+    "review": "Execution speed and clarity are spot on. The tool integrates smoothly with our daily workflow and the support team is stellar.",
+    "photo": "assets/img/reviews/KevinKith.jpg"
+  }
+]
